@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Cours 1 Vue JS</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        
+    </head>
+    <body>
+        <h1> HELLO WORLD </h1>
+        <section id="app">
+            <h2>OPTION API</h2>
+            <p>{{message}} {{name}}</p>
+            <p>The Count is {{count}}</p>
+            <p>The Date Now is {{now}}</p>
+
+            <p
+                v-if="checkNumber == true"
+            >
+                PLUS DE 5 !!!
+            </p>
+            <p
+                v-else
+            >
+                MOINS DE 5 !!!
+            </p>
+            
+            
+
+
+            <!-- <button v-on:click="plus" >CLICK ME</button> -->
+
+            <button @click="plus" >CLICK ME +</button>
+            <button @click="moins" >CLICK ME -</button>
+
+            <!-- <component-option v-bind:title="'Chewbi'" /> -->
+
+            <component-option :title="message" />
+
+
+        </section>
+
+
+        <section id="app-compo">
+            <h2>COMPOSITION API</h2>
+            <p>{{message}} {{name}}</p>
+
+            <component-compo />
+
+        </section>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="module" src="./assets/script_option.js"></script>
+        <script type="module" src="./assets/script_composition.js"></script>
+    </body>
+</html>
