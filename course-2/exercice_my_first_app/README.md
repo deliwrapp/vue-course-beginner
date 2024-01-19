@@ -20,7 +20,7 @@ Créer un composant en mode Option API
 **Objectifs :**
 - Compléter le script main.js
 - Afficher votre composant dans le Composant racine App.vue
-- **"Bind"** la props :msg depuis le comosant App.vue
+- **"Bind"** la props :msg depuis le composant App.vue
 - Utiliser les méthodes et les "data" définis dans le composant enfant
 
 

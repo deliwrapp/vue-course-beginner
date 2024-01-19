@@ -1,12 +1,12 @@
 <script setup>
 /*  
 CE COMPOSANT RACINE APP RESTE EN MODE COMPOSITION API
-IMPORTER LES COMPOSANT ICI 
+IMPORTER LES COMPOSANTS ICI 
 */
 </script>
 
 <template>
-  <!-- Monter les composant ici -->
+  <!-- Monter les composants ici -->
 </template>
 
 <style scoped>
