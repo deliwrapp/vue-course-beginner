@@ -1,5 +1,21 @@
 # APP Bootstap Vue Example
 
+** redéfinir les slots **
+- nommé les slots
+- rendu consitionnel de slots / expliquer
+- injecter dans le slot Header
+
+** Remettre en place la boucle v-for et expliquer **
+
+** Rendre conditionnel l'affichage du menu principal **
+- Une  props
+- Un rendu conditionnel
+
+** Ajouter un bouton login qui toggle/bascule la valeur de showUserNav **
+- un bouton
+- l'event click
+- une methode pour modifier la valeur
+
 ## Project Setup
 
 ```sh

@@ -33,6 +33,10 @@
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
         </a>
+
+        <!-- Rendre conditionnel l'affichage du menu principal -->
+        <!-- Une  props -->
+        <!-- Un rendu conditionnel -->
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li
                 v-for="(item, index) in navItems"
@@ -53,6 +57,12 @@
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
+
+        <!-- 
+            Une boucle ne peut pas être associée à une condition 
+            v-if dans un même élément
+            Le v-if doit être dans un élément "conteneur" 
+        -->
         <div
             v-if="showUserNav === true"
             class="dropdown text-end"
@@ -77,6 +87,11 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
+        </div>
+        <div v-else>
+            <button class="btn btn-success">
+                Connexion
+            </button>
         </div>
       </div>
     </div>

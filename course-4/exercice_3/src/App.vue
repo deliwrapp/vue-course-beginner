@@ -96,13 +96,20 @@ export default {
 
 <template>
   <main-layout>
-    <template #header>
+    <!-- redéfinir les slots  -->
+      <!-- - DEBUT injecter dans le slot Header -->
       <main-nav
         :navItems="navItemsArray"
         :userNavItems="userNavItemsArray"
-        :showUserNav="true"
+        :showUserNav="false"
       />
-    </template>
+
+      <!-- Ajouter un bouton login qui toggle/bascule la valeur de showUserNav -->
+      <!-- un bouton -->
+      <!-- l'event click -->
+      <!-- une methode pour modifier la valeur -->
+   
+    <!-- - FIN injecter dans le slot Header -->
     
     <!-- Injecter ici les données dans le slot default 
     du composant main-layout -->
