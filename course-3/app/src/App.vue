@@ -19,10 +19,12 @@ export default {
       description: "Oh qu'ils sont bon !!",
       price: 99,
       vta: 20,
+      category: "sweet",
       products: [
         {
           id: 1,
           name: "biscuit",
+          category: "sweet",
           description: "Oh qu'ils sont bon !!",
           price: 100,
           vta: 20
@@ -35,6 +37,7 @@ export default {
       this.products.push({
         id: this.products.length + 1,
         name: this.name,
+        category: this.category,
         description: this.description,
         price: this.price,
         vta: this.vta
@@ -61,11 +64,29 @@ export default {
         </div>
         <div class="w-f">
           <label for="price">Price</label>
-          <input v-model="price" name="price" type="number" id="price"> €
+          <input v-model="price" name="price" type="range" min="20" max="50" id="price"> €
         </div>
         <div class="w-f">
           <label for="vta">TVA</label>
-          <input v-model="vta" name="vta" type="number" id="vta"> %
+          <input 
+            v-model="vta"
+            name="vta"
+            type="number"
+            id="vta"
+          > %
+        </div>
+        <div class="w-f">
+          <label for="category">CATEGORIE</label>
+          <select
+            v-model="category"
+            name="category"
+            id="category"
+          >
+            <option value="meat">Viande</option>
+            <option value="vegetable">Légume</option>
+            <option value="drink">Boisson</option>
+            <option value="sweet">Confiserie</option>
+          </select>
         </div>
         <div class="w-f">
           <textarea 
