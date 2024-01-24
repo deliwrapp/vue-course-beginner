@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Comparaison JS EventListener Vue JS</title>
+</head>
+<body>
+
+    <!-- 
+    @click avec vue js est l'équivalent de : 
+    const btn = document.querySelector("#my-btn")
+    btn.addEventListener("click", 
+    -->
+    <button @click="appelUneFonction"> Hello </button>
+
+
+    <button id="my-btn"> Hello </button>
+
+    <script>
+        const btn = document.querySelector("#my-btn")
+
+        btn.addEventListener("click", (event) => {
+
+            event.preventDefault
+            event.stopPropagation
+            console.log(event.target)  /* Affiche #myBtn */
+            console.log(event.type) /* click */
+        })  
+    </script>
+</body>
+</html>

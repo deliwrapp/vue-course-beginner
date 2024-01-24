@@ -6,8 +6,10 @@
 ** Importer depuis JSON **
 - Utilisation d'un fichier JSON pour importer vos produits et catégorie
 
-** Mise en place d'un CRUD pour Catégorie **
-- Ajouter/Modifier/Supprimer/Voir une nouvelle catégorie
+** Compléter le CRUD de Produit **
+- Supprimer un nouveau produit
+- Voir un nouveau produit (bonus)
+- Éditer un nouveau produit (bonus)
 
 ## Project Setup
 

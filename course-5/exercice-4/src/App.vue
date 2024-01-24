@@ -3,6 +3,8 @@ import MainLayout from './components/Layout/MainLayout.vue'
 import MainNav from './components/Layout/MainNav.vue'
 import ProductForm from "./components/Form/ProductForm.vue"
 import ProductsTable from "./components/Product/ProductsTable.vue"
+/* Importation des données depuis un fichier json - La conversion est automatique */
+
 
 export default {
   name: 'App',
@@ -55,22 +57,20 @@ export default {
           class: "link-body-emphasis"
         }
       ],
-      products: [
-        {
-          id: 1,
-          name: "biscuit",
-          category: "sweet",
-          description: "Oh qu'ils sont bon !!",
-          price: 100,
-          vta: 20
-        }
-      ]
+      /* On lie les données importées depuis le fichier JSON */
+      products: products
     }
   },
   methods: {
-    /* payload représente les donnée envoyé par l'événement */
+    /* payload représente les données envoyées par l'événement */
     addProduct(payload) {
       this.products.push(payload)
+    },
+    deleteProduct(product) {
+      /* Ici on va parcourir le tableau products et supprimer le produit transmis */
+
+
+
     }
   }
 }
@@ -93,6 +93,11 @@ export default {
         @addProduct="addProduct"
         class="col-6"
       />
+      <!-- 
+        Ici, nous allons écouter un événement qui stipule
+        de supprimer un produit de la liste et appeler
+        la fonction de suppression deleteProduct
+      -->
       <products-table
         class="col-6"
         :products="products"  
