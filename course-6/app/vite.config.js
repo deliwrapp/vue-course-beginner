@@ -10,7 +10,9 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+      /* création d'un raccourcis personnalisé */
+      '#': fileURLToPath(new URL('./src/components', import.meta.url))
     }
   }
 })

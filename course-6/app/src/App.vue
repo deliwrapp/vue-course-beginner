@@ -64,10 +64,6 @@ export default {
     }
   },
   methods: {
-    /* payload représente les données envoyées par l'événement */
-    addProduct(payload) {
-      this.products.push(payload)
-    },
     editProduct(product) {
       this.productToEdit = product != null ? product : null
       this.editMode = product != null ? true : false
@@ -104,19 +100,12 @@ export default {
     </template>
 
     <section class="d-flex wrap">
-      <!-- insérer un écouter d'évènement personnalisé qui appel la focntion addProduct -->
       <product-form
-        @addProduct="addProduct"
         @updateProduct="updateProduct"
         class="col-6"
         :editMode="editMode"
         :productToEdit="productToEdit"
       />
-      <!-- 
-        Ici, nous allons écouter un événement qui stipule
-        de supprimer un produit de la liste et appeler
-        la fonction de suppression deleteProduct
-      -->
       <products-table
         class="col-6"
         :products="products"

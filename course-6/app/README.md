@@ -64,3 +64,10 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+
+### Raccourcis Utiles
+
+@\ est un raccourcis vers le dossier ./src
+
+#\ est un raccourcis vers le dossier ./src/components
