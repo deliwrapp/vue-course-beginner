@@ -1,0 +1,19 @@
+[
+
+    {
+        "id": 1,
+        "name": "Biscuit",
+        "category": "Confiserie",
+        "description": "Des super Biscuit Trop bon",
+        "price": 1,
+        "vta": 20
+    },
+    {
+        "id": 2,
+        "name": "Rhum",
+        "category": "Boisson",
+        "description": "Y'a bon !",
+        "price": 10,
+        "vta": 20
+    }
+]
