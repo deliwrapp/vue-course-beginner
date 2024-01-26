@@ -11,16 +11,19 @@ export default {
   },
   updated() {
     if (
-      (this.editMode && this.productToEdit != null && !this.confirmEditMode) ||
-      (this.editMode && this.productToEdit != this.currentProduct)
+      this.getEditProductMode && this.getProductToEditId != null && !this.confirmEditMode ||
+      this.getEditProductMode && this.getProductToEditId != this.currentProductId
     ) {
-      this.name = this.productToEdit.name;
-      this.description = this.productToEdit.description;
-      this.price = this.productToEdit.price;
-      this.vta = this.productToEdit.vta;
-      this.category = this.productToEdit.category;
+      // IMPORTER LE PRODUIT SELECTIONNÉ
+      const product = this.getProductById(this.getProductToEditId)
+      console.log("product :", product)
+      this.name = product.name;
+      this.description = product.description;
+      this.price = product.price;
+      this.vta = product.vta;
+      this.category = product.category;
       this.confirmEditMode = true;
-      this.currentProduct = this.productToEdit;
+      this.currentProductId = this.productToEditId;
     }
   },
   data() {
@@ -31,7 +34,8 @@ export default {
       vta: 20,
       category: "sweet",
       confirmEditMode: false,
-      currentProduct: null,
+      currentProductId: null,
+      productToEditId: null
     };
   },
   props: {
@@ -46,7 +50,7 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.editMode && this.productToEdit != null) {
+      if (this.getEditProductMode && this.productToEdit != null) {
         const product = {
           id: this.productToEdit.id,
           name: this.name,
@@ -79,6 +83,13 @@ export default {
     /* version sans Alias */
     /* ...mapActions(useProductsStore, ["addProduct", "updateProduct"]) */
   },
+  computed: {
+    ...mapState(useProductsStore, [
+      "getEditProductMode",
+      "getProductToEditId" ,
+      "getProductById"
+    ]),
+  }
 };
 </script>
 
@@ -150,9 +161,9 @@ export default {
       <button
         class="btn"
         type="submit"
-        :class="editMode ? 'btn-primary' : 'btn-success'"
+        :class="getEditProductMode ? 'btn-primary' : 'btn-success'"
       >
-        {{ editMode ? "Mettre à Jour" : "Enregistrer" }}
+        {{ getEditProductMode ? "Mettre à Jour" : "Enregistrer" }}
       </button>
     </form>
   </section>

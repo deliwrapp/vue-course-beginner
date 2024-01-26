@@ -1,12 +1,10 @@
 <script>
-/* 
-Ajouter un événement deleteProduct
-Transmettre les données au composant parent 
-*/
+import { mapState, mapActions } from 'pinia'
+import { useProductsStore } from '../../stores/products.js'
 
 export default {
     name: 'ProductsTable',
-    emits: ["editProduct", "deleteProduct"],
+    emits: ["deleteProduct"],
     data() {
         return {
             nothing: null
@@ -27,14 +25,18 @@ export default {
         }
     },
     methods: {
-        emitEditProduct(product) {
-            this.$emit("editProduct", product)
+        editProduct(productId) {
+            this.setEditProductMode(true)
+            this.setProductToEditId(productId)
+            console.log("id : ", productId)
         },
         emitDeleteProduct(product) {
             this.$emit("deleteProduct", product)
-        }
+        },
+        ...mapActions(useProductsStore, ["setEditProductMode", "setProductToEditId"])
     },
     computed: {
+        ...mapState(useProductsStore, ["getProducts"]),
         vtaCalculation: () => (price, vta) => {
             if (typeof price != "number" ) {
                 /* throw new Error('Parameter is not a number!') */
@@ -70,7 +72,7 @@ export default {
             </thead>
             <tbody class="table-group-divider">
                 <tr 
-                    v-for="item in products"
+                    v-for="item in getProducts"
                     :key="item.id"
                 >
                     <td>{{ item.name }}</td>
@@ -87,7 +89,7 @@ export default {
                     <td>
                         <button 
                             class="btn btn-primary"
-                            @click="emitEditProduct(item)"
+                            @click="editProduct(item.id)"
                         >
                             Éditer
                         </button>

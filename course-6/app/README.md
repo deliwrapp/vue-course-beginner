@@ -1,4 +1,4 @@
-# APP 
+# APP : LES STORES
 
 ** Réorganiser l'application **
 - Ajout de Pinia pour la gestion des Store
