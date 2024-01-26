@@ -86,10 +86,17 @@ export default {
       this.vta =  20
       this.category = null
     },
+    cancel() {
+      this.resetForm()
+      this.confirmEditMode = false
+      this.currentProductId = null
+      this.resetEditionMode()
+    },
     /* version avec Alias */
     ...mapActions(useProductsStore, {
       addProduct: "addProduct",
       updateProduct: "updateProduct",
+      resetEditionMode: "resetEditionMode"
     })
     /* version sans Alias */
     /* ...mapActions(useProductsStore, ["addProduct", "updateProduct"]) */
@@ -168,13 +175,29 @@ export default {
         >
         </textarea>
       </div>
-
+      
       <button
         class="btn"
         type="submit"
         :class="getEditProductMode ? 'btn-primary' : 'btn-success'"
       >
         {{ getEditProductMode ? "Mettre à Jour" : "Enregistrer" }}
+      </button>
+      <button
+        v-if="getEditProductMode"
+        class="btn btn-danger"
+        type="button"
+        @click="cancel"
+      >
+        Annuler
+      </button>
+      <button
+        v-else
+        class="btn btn-danger"
+        type="button"
+        @click="resetForm"
+      >
+        Reset
       </button>
     </form>
   </section>
