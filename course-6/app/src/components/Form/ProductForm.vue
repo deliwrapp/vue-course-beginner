@@ -9,21 +9,24 @@ export default {
   mounted() {
     console.log(this);
   },
-  updated() {
-    if (
-      this.getEditProductMode && this.getProductToEditId != null && !this.confirmEditMode ||
-      this.getEditProductMode && this.getProductToEditId != this.currentProductId
-    ) {
-      // IMPORTER LE PRODUIT SELECTIONNÉ
-      const product = this.getProductById(this.getProductToEditId)
-      console.log("product :", product)
-      this.name = product.name;
-      this.description = product.description;
-      this.price = product.price;
-      this.vta = product.vta;
-      this.category = product.category;
-      this.confirmEditMode = true;
-      this.currentProductId = this.productToEditId;
+  watch: {
+    getProductToEditId(newValue, oldValue) {
+      if (newValue, oldValue) {
+        if (
+          this.getEditProductMode && newValue != null && !this.confirmEditMode ||
+          this.getEditProductMode && newValue != this.currentProductId
+        ) {
+          // IMPORTER LE PRODUIT SELECTIONNÉ
+          const product = this.getProductById(this.getProductToEditId)
+          this.name = product.name;
+          this.description = product.description;
+          this.price = product.price;
+          this.vta = product.vta;
+          this.category = this.getProductById(this.getProductToEditId).category;
+          this.confirmEditMode = true;
+          this.currentProductId = this.productToEditId;
+        }
+      }
     }
   },
   data() {
@@ -34,8 +37,7 @@ export default {
       vta: 20,
       category: "sweet",
       confirmEditMode: false,
-      currentProductId: null,
-      productToEditId: null
+      currentProductId: null
     };
   },
   props: {
@@ -50,19 +52,20 @@ export default {
   },
   methods: {
     submitForm() {
-      if (this.getEditProductMode && this.productToEdit != null) {
+      if (this.getEditProductMode && this.getProductToEditId != null) {
         const product = {
-          id: this.productToEdit.id,
+          id: this.getProductToEditId,
           name: this.name,
           description: this.description,
           price: this.price,
           vta: this.vta,
           category: this.category,
         };
+        console.log("category", this.category)
         /* this.$emit("updateProduct", product); */
         this.updateProduct(product)
         this.confirmEditMode = false
-        this.currentProduct = null
+        this.currentProductId = null
       } else {
         const product = {
           id: Math.floor(Math.random() * Date.now()),
@@ -74,6 +77,14 @@ export default {
         };
         this.addProduct(product)
       }
+      this.resetForm()
+    },
+    resetForm() {
+      this.name = null
+      this.description = null
+      this.price = 0
+      this.vta =  20
+      this.category = null
     },
     /* version avec Alias */
     ...mapActions(useProductsStore, {

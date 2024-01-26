@@ -25,6 +25,7 @@ export const useProductsStore = defineStore('products', {
         this.products.push(product)
       },
       updateProduct(product) {
+        console.log("update in store", product)
         const index = this.products.findIndex(el => {
             return el.id === product.id
         })
