@@ -32,6 +32,10 @@ export const useProductsStore = defineStore('products', {
         this.products[index] = product
         this.resetEditionMode()
       },
+      deleteProduct(productId) {
+        /* Ici on va parcourir le tableau products et supprimer le produit transmis */
+        this.products = this.products.filter(el => el.id != productId)
+      },
       setEditProductMode(mode) {
         console.log("mode Edition : ", mode)
         this.editProductMode = mode

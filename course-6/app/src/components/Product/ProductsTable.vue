@@ -4,7 +4,6 @@ import { useProductsStore } from '../../stores/products.js'
 
 export default {
     name: 'ProductsTable',
-    emits: ["deleteProduct"],
     data() {
         return {
             nothing: null
@@ -30,10 +29,7 @@ export default {
             this.setProductToEditId(productId)
             console.log("id : ", productId)
         },
-        emitDeleteProduct(product) {
-            this.$emit("deleteProduct", product)
-        },
-        ...mapActions(useProductsStore, ["setEditProductMode", "setProductToEditId"])
+        ...mapActions(useProductsStore, ["deleteProduct", "setEditProductMode", "setProductToEditId"])
     },
     computed: {
         ...mapState(useProductsStore, ["getProducts"]),
@@ -97,7 +93,7 @@ export default {
                         <!-- au clic, appel de la fonction emitDeleteProduct(product) -->
                         <button 
                             class="btn btn-danger"
-                            @click="emitDeleteProduct(item)"
+                            @click="deleteProduct(item.id)"
                         >
                             Supprimer
                         </button>
