@@ -26,7 +26,9 @@ export const useProductsStore = defineStore(STORE_NAME, {
       getEditProductMode : (state) => state.editProductMode,
       getProductToEditId: (state) => state.productToEditId,
       getProductById: (state) => (id) => {
-        return state.products.find(product => product.id === id)
+        console.log("store product id : ", id)
+        console.log(state.products.find(product => product.id == id))
+        return state.products.find(product => product.id == id)
       }
     },
     actions: {

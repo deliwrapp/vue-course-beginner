@@ -73,7 +73,7 @@ export default {
                 >
                     <td>
                         <router-link
-                            :to="{name: 'ProductDetails', params: {id: item.id}}"
+                            :to="{name: 'ProductDetailsPage', params: {id: item.id}}"
                         >
                             {{ item.name }}
                         </router-link>

@@ -11,21 +11,19 @@ export default {
   },
   watch: {
     getProductToEditId(newValue, oldValue) {
-      if (newValue, oldValue) {
-        if (
-          this.getEditProductMode && newValue != null && !this.confirmEditMode ||
-          this.getEditProductMode && newValue != this.currentProductId
-        ) {
-          // IMPORTER LE PRODUIT SELECTIONNÉ
-          const product = this.getProductById(this.getProductToEditId)
-          this.name = product.name;
-          this.description = product.description;
-          this.price = product.price;
-          this.vta = product.vta;
-          this.category = this.getProductById(this.getProductToEditId).category;
-          this.confirmEditMode = true;
-          this.currentProductId = this.productToEditId;
-        }
+      if (
+        this.getEditProductMode && newValue != null && !this.confirmEditMode ||
+        this.getEditProductMode && newValue != this.currentProductId
+      ) {
+        // IMPORTER LE PRODUIT SELECTIONNÉ
+        const product = this.getProductById(this.getProductToEditId)
+        this.name = product.name;
+        this.description = product.description;
+        this.price = product.price;
+        this.vta = product.vta;
+        this.category = this.getProductById(this.getProductToEditId).category;
+        this.confirmEditMode = true;
+        this.currentProductId = this.productToEditId;
       }
     }
   },
