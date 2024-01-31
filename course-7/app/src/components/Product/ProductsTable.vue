@@ -71,7 +71,13 @@ export default {
                     v-for="item in getProducts"
                     :key="item.id"
                 >
-                    <td>{{ item.name }}</td>
+                    <td>
+                        <router-link
+                            :to="{name: 'ProductDetails', params: {id: item.id}}"
+                        >
+                            {{ item.name }}
+                        </router-link>
+                    </td>
                     <td>{{ item.category }}</td>
                     <td>
                         <p>
