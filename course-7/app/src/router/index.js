@@ -5,8 +5,14 @@ import ProductAdmin from '../views/Admin/ProductAdmin.vue'
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
-    { path: '/', component: HomePage },
-    { path: '/product-admin', component: ProductAdmin },
+    {
+        path: '/', 
+        component: HomePage 
+    },
+    { 
+        path: '/admin/products',
+        component: ProductAdmin 
+    },
   ]
 
 // Create the router instance and pass the `routes` option

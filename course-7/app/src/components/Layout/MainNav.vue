@@ -38,14 +38,14 @@
                 v-for="(item, index) in navItems"
                 :key="index"
             >
-                <a 
-                    :href="item.link ? item.link : '#' "
+                <router-link 
+                    :to="item.link ? item.link : '#' "
                     :class="item.class ? item.class : null"
                     :target="item.target ? item.target : '_self'"
                     class="nav-link px-2 link-secondary"
                 >
                     {{item.name ? item.name : 'link'}}
-                </a>
+                </router-link>
             </li>
         </ul>
 
@@ -65,14 +65,14 @@
                 v-for="(item, index) in userNavItems"
                 :key="index"
             >
-                <a
-                    :href="item.link ? item.link : '#' "
+                <router-link
+                    :to="item.link ? item.link : '#' "
                     :class="item.class ? item.class : null"
                     :target="item.target ? item.target : '_self'"
                     class="dropdown-item"
                 >
                     {{item.name ? item.name : 'link'}}
-                </a>
+                </router-link>
             </li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Sign out</a></li>
@@ -81,3 +81,17 @@
       </div>
     </div>
 </template>
+
+<style scoped>
+    * {
+    transition: all .3s ease-in-out;
+    }
+    .router-link-active {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: #42b983;
+    }
+    .router-link-active:hover {
+        font-size: 1.5rem;
+    }
+</style>

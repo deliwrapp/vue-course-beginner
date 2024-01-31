@@ -12,41 +12,21 @@ export default {
     return {
       userNavItemsArray : [
         {
-          name: "Settings",
-          link: "#",
-          target: "_self"
-        },
-        {
-          name: "Profile",
-          link: "#",
+          name: "Home",
+          link: "/",
           target: "_self"
         }
       ],
       navItemsArray : [
         {
-          name: "Edit",
-          link: "#",
-          target: "_self",
-          emit: [
-            { event: "updatePage", value: {"EditPage": true}}
-          ],
-          class: "link-body-emphasis"
-        },
-        {
-          name: "Preview",
-          link: "#",
-          emit: [
-            { event: "updatePage", value: {"PreviewPage": true}}
-          ],
+          name: "Home",
+          link: "/",
           target: "_self",
           class: "link-body-emphasis"
         },
         {
-          name: "Settings",
-          link: "#",
-          emit: [
-            { event: "updatePage", value: {"settingsPage": true}}
-          ],
+          name: "Products",
+          link: "/admin/products",
           target: "_self",
           class: "link-body-emphasis"
         }
@@ -65,9 +45,6 @@ export default {
         :userNavItems="userNavItemsArray"
         :showUserNav="true"
       />
-      <router-link to="/">Home</router-link> 
-      | 
-      <router-link to="/product-admin">Product Admin</router-link>
     </template>
     
     <router-view></router-view>
@@ -76,4 +53,5 @@ export default {
 </template>
 
 <style scoped>
+
 </style>
