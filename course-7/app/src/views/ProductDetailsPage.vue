@@ -1,7 +1,7 @@
 <script>
 import { mapState } from 'pinia'
 import { useAppStore  } from '@/stores'
-import ProductDetails from '@/components/Product/ProductDetails.vue'
+import {ProductDetails} from '@/components'
 
 export default {
     name: "ProductDetailsPage",

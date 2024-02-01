@@ -1,6 +1,5 @@
 <script>
-import ProductForm from "@/components/Form/ProductForm.vue"
-import ProductsTable from "@/components/Product/ProductsTable.vue"
+import {ProductForm, ProductsTable} from "@/components"
 
 export default {
     name: "ProductAdmin",

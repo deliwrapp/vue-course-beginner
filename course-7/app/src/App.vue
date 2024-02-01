@@ -1,6 +1,5 @@
 <script >
-import MainLayout from './components/Layout/MainLayout.vue'
-import MainNav from './components/Layout/MainNav.vue'
+import {MainLayout, MainNav} from './components'
 
 export default {
   name: 'App',

@@ -1,7 +1,7 @@
 <script>
 import { mapState } from 'pinia'
 import { useProductsStore  } from '@/stores'
-import ProductDetailsCard from '@/components/Product/ProductDetailsCard.vue'
+import {ProductDetailsCard} from '@/components'
 
 export default {
     name: "ProductListPage",
