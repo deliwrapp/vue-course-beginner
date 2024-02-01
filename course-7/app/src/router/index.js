@@ -3,12 +3,6 @@ import HomePage from '../views/HomePage.vue'
 // Importer un fichier JSON contenant les routes du site
 import sitemap from '../data/routesList.json'
 
-// Cette fonction permet de s'assurer que le chemin d'import pour le composant
-// commemence par un '/'
-const sanitizeRoutePath = (path) => {
-    return path[0] != '/' ?  path = '/' + path : path
-}  
-
 // Each route should map to a component.
 // We'll talk about nested routes later.
 const routes = [
@@ -25,6 +19,11 @@ sitemap.forEach(el => {
     routes.push(newRoute)
   });
 
+// Cette fonction permet de s'assurer que le chemin d'import pour le composant
+// commemence par un '/'
+const sanitizeRoutePath = (path) => {
+    return path[0] != '/' ?  path = '/' + path : path
+}  
 function setRoute(el, level = null) {
     let newRoute = {
         path: sanitizeRoutePath(el.path),
@@ -46,10 +45,10 @@ function setRoute(el, level = null) {
 function getChildrenData(children) {
     const childrensArray = []
     children.forEach(el=> {
-        let childRoute = setRoute(el)
+        let childRoute = setRoute(el, "children")
         childrensArray.push(childRoute)
     })
-return childrensArray
+    return childrensArray
 }
 
 // Create the router instance and pass the `routes` option
