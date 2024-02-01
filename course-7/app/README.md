@@ -1,22 +1,16 @@
-# APP : LES STORES
+# APP : LE ROUTER
 
 ** Réorganiser l'application **
-- Ajout de Pinia pour la gestion des Store
-- Ajouter un composant ProductDetail
+- Ajout de Vue Router pour la Gestion des Routes
+- Import dynamique des Routes depuis un fichier JSON du dossier data/
+- Ajout des Pages 
+    - AdminProduct
+    - HomePage
+    - Product Details
+    - Product List
+- Mise à jour du composant MainNav pour utliser : 
+`` <router-link/>``
 
-** Ajout d'un Store pour la Gestion des Produits **
-- Ajouter
-- Update
-- Delete
-- FindById
-- FindByName
-
-** Ajout d'un Store Pour Catégorie **
-- Ajouter
-- Update
-- Delete
-- FindById
-- FindByName
 
 
 ## Project Setup
@@ -68,6 +62,19 @@ npm run lint
 
 ### Raccourcis Utiles
 
-@\ est un raccourcis vers le dossier ./src
+@/ est un raccourcis vers le dossier ./src
 
-#\ est un raccourcis vers le dossier ./src/components
+#/ est un raccourcis vers le dossier ./src/components
+
+Grace au fichier d'indexation index.js à la racine du dossier src/components/ il est désormais possible d'importer un composant directement comme l'eexemple suivant:
+```sh
+import {MyComponent} from '@/components'
+```
+```sh
+import {MyComponent} from '#'
+```
+
+Grace au fichier d'indexation index.js à la racine du dossier src/stores/ il est désormais possible d'importer un store directement comme l'exemple suivant:
+```sh
+import {useMyStoreStore} from '@/stores'
+```
