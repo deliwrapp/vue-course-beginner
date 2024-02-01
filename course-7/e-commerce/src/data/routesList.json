@@ -1,0 +1,20 @@
+[
+    { 
+        "uuid": "products_admin_page",
+        "name": "ProductAdmin",
+        "path": "/admin/products",
+        "component": "Admin/ProductAdmin.vue" 
+    },
+    { 
+        "uuid": "products_list_page",
+        "name": "ProductListPage",
+        "path": "/products",
+        "component": "ProductListPage.vue" 
+    },
+    { 
+        "uuid": "product_details_page",
+        "name": "ProductDetailsPage",
+        "path": "/products/:id",
+        "component": "ProductDetailsPage.vue" 
+    }
+]
