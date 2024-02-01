@@ -21,7 +21,7 @@ sitemap.forEach(el => {
 
 // Cette fonction permet de s'assurer que le chemin d'import pour le composant
 // commemence par un '/'
-const sanitizeRoutePath = (path) => {
+function sanitizeRoutePath(path) {
     return path[0] != '/' ?  path = '/' + path : path
 }  
 function setRoute(el, level = null) {
