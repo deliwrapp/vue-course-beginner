@@ -16,7 +16,6 @@ export default {
   computed: {
     ...mapState(useProductsStore, ["getProductById"]),
     getCurrentProduct() {
-      console.log(this.getProductById(this.productId));
       return this.getProductById(this.productId);
     },
     vtaCalculation: () => (price, vta) => {

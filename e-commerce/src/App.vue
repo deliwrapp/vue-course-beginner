@@ -6,31 +6,6 @@ export default {
   components: {
     MainLayout,
     MainNav
-  },
-  data() {
-    return {
-      userNavItemsArray : [
-        {
-          name: "Home",
-          link: "/",
-          target: "_self"
-        }
-      ],
-      navItemsArray : [
-        {
-          name: "Home",
-          link: "/",
-          target: "_self",
-          class: "link-body-emphasis"
-        },
-        {
-          name: "Products",
-          link: "/admin/products",
-          target: "_self",
-          class: "link-body-emphasis"
-        }
-      ]
-    }
   }
 }
 </script>
@@ -39,11 +14,7 @@ export default {
   <!-- Monter les composants ici -->
   <main-layout>
     <template #header>
-      <main-nav
-        :navItems="navItemsArray"
-        :userNavItems="userNavItemsArray"
-        :showUserNav="true"
-      />
+      <main-nav/>
     </template>
     
     <router-view v-slot="{ Component }">
@@ -52,6 +23,11 @@ export default {
       </transition>
     </router-view>
 
+    <template #footer>
+      <router-link to="/login">
+        Login
+      </router-link>
+    </template>
   </main-layout>
 </template>
 

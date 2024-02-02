@@ -1,9 +1,17 @@
 [
     { 
-        "uuid": "products_admin_page",
+        "uuid": "admin_dashboard_page",
+        "name": "AdminDashboard",
+        "path": "/admin",
+        "component": "Admin/AdminDashboard.vue",
+        "meta": { "requiresAuth": true, "isAdmin": true }
+    },
+    { 
+        "uuid": "admin_products_page",
         "name": "ProductAdmin",
         "path": "/admin/products",
-        "component": "Admin/ProductAdmin.vue" 
+        "component": "Admin/ProductAdmin.vue",
+        "meta": { "requiresAuth": true, "isAdmin": true }
     },
     { 
         "uuid": "products_list_page",

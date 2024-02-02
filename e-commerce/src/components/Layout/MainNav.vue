@@ -1,27 +1,43 @@
 <script>
+    import { mapState } from 'pinia'
+    import { useAppStore  } from '@/stores'
+    import nav from '@/data/nav.json'
+
     export default {
         name: "MainNav",
         props: {
             navItems: {
-                type: Array,
+                type: Object,
                 required: false,
                 default: function () {
-                    return null
+                    return nav.publicMainNav
                 }
             },
             showUserNav: {
                 type: Boolean,
                 required: false,
                 default: function () {
-                    return false
+                    return nav.showUserNav
                 }
             },
             userNavItems: {
-                type: Array,
+                type: Object,
                 required: false,
                 default: function () {
-                    return null
+                    return nav.userNav
                 }
+            }
+        },
+        computed: {
+            ...mapState(useAppStore, ["getIsAuthenticated", "getIsAdmin"]),
+            checkDisplay: () => (link, isAuth = false, isAdmin = false) => {
+                if (link.meta && link.meta.requiresAuth === true && isAuth === false) {
+                    return false
+                }
+                if (link.meta && link.meta.isAdmin === true && isAdmin === false) {
+                    return false
+                }
+                return true
             }
         }
     }
@@ -35,10 +51,11 @@
         </a>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li
-                v-for="(item, index) in navItems"
+                v-for="(item, index) in navItems.items"
                 :key="index"
             >
-                <router-link 
+                <router-link
+                    v-if="checkDisplay(item, getIsAuthenticated, getIsAdmin)"
                     :to="item.link ? item.link : '#' "
                     :class="item.class ? item.class : null"
                     :target="item.target ? item.target : '_self'"
@@ -53,19 +70,28 @@
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
 
+        <router-link
+            v-if="getIsAuthenticated === false" 
+            class="btn btn-success"
+            to="/login" 
+        >
+            Connexion
+        </router-link>
         <div
-            v-if="showUserNav === true"
+            v-if="showUserNav === true && getIsAuthenticated === true"
             class="dropdown text-end"
         >
+
           <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle show" data-bs-toggle="dropdown" aria-expanded="true">
             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small" data-popper-placement="bottom-end" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 34px);">
             <li
-                v-for="(item, index) in userNavItems"
+                v-for="(item, index) in userNavItems.items"
                 :key="index"
             >
                 <router-link
+                    v-if="checkDisplay(item, getIsAuthenticated, getIsAdmin)"
                     :to="item.link ? item.link : '#' "
                     :class="item.class ? item.class : null"
                     :target="item.target ? item.target : '_self'"

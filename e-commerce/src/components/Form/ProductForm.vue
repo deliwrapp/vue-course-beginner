@@ -6,9 +6,9 @@ export default {
   name: "ProductForm",
   emits: ["updateProduct"],
   /* Utilisation d'un hook du cycle de vie du composant */
-  mounted() {
+  /* mounted() {
     console.log(this);
-  },
+  }, */
   watch: {
     getProductToEditId(newValue, oldValue) {
       if (

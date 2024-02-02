@@ -27,7 +27,6 @@ export default {
         editProduct(productId) {
             this.setEditProductMode(true)
             this.setProductToEditId(productId)
-            console.log("id : ", productId)
         },
         ...mapActions(useProductsStore, ["deleteProduct", "setEditProductMode", "setProductToEditId"])
     },

@@ -1,0 +1,47 @@
+{
+    "showUserNav": true,
+    "publicMainNav" : {
+        "name": "PublicMainNav",
+        "requiresAuth": false,
+        "isAdmin": false,
+        "items": [
+            {
+                "name": "Home",
+                "link": "/",
+                "target": "_self",
+                "class": "link-body-emphasis"
+            },
+            {
+                "name": "Products",
+                "link": "/admin/products",
+                "target": "_self",
+                "class": "link-body-emphasis",
+                "meta": { 
+                    "requiresAuth": true,
+                    "isAdmin": true
+                }
+            }
+        ]
+    },
+    "userNav" : {
+        "name": "PublicMainNav",
+        "requiresAuth": true,
+        "isAdmin": false,
+        "items": [
+            {
+                "name": "Home",
+                "link": "/",
+                "target": "_self"
+            },
+            {
+                "name": "Administration",
+                "link": "/admin",
+                "target": "_self",
+                "meta": { 
+                    "requiresAuth": true,
+                    "isAdmin": true
+                }
+            }
+        ]
+    }
+}
