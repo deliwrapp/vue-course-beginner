@@ -19,7 +19,12 @@ export default {
     
     <router-view v-slot="{ Component }">
       <transition name="slide-fade">
-        <component :is="Component" />
+        <!-- on peut selectionner les composants à inclure ou exclure -->
+        <!-- include="ProductAdmin" -->
+        <!-- exclude="ProductAdmin" -->
+        <keep-alive :max="2">
+          <component :is="Component" />
+        </keep-alive>
       </transition>
     </router-view>
 

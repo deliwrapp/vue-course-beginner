@@ -88,6 +88,7 @@ export default {
             <tbody
                 class="table-group-divider"
             >
+            <transition-group name="list">
                 <tr 
                     v-for="item in getProducts"
                     :key="item.id"
@@ -116,7 +117,8 @@ export default {
                         :class="item.category"
                     >
                         
-                        {{ item.price }} €</td>
+                        {{ item.price }} €
+                    </td>
                     <td>
                         <span :class="item.vta == 20 ?  'badge text-bg-danger' : 'badge text-bg-info' ">
                             {{ item.vta }} %
@@ -142,7 +144,21 @@ export default {
                         </button>
                     </td>
                 </tr>
+            </transition-group> 
             </tbody>
         </table>
     </section>
 </template>
+
+<style scoped>
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+</style>
