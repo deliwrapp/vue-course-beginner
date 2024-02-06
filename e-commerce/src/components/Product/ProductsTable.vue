@@ -6,7 +6,8 @@ export default {
     name: 'ProductsTable',
     data() {
         return {
-            nothing: null
+            activeColor: 'green',
+            borderSize: 5
         }
     },
     props: {
@@ -43,6 +44,21 @@ export default {
         vtaCalculationLocal() {
             let tax = (this.price / 100) * this.vta
             return this.price + tax
+        },
+        getCategoryClass: () => (category) => {
+            if (category == "sweet") {
+                return "text-bg-warning"            
+            }
+            if (category == "drink") {
+                return "text-bg-primary"                
+            }
+            if (category == "meat") {
+                return "text-bg-danger"                
+            }
+            if (category == "vegetable") {
+                return "text-bg-success"                
+            }
+            return "text-bg-light"
         }
     }
 }
@@ -53,7 +69,11 @@ export default {
         <h2 class="text-center">Products Table</h2>
         <p>Exemple de Computed Local</p>
         <p>{{ vtaCalculationLocal }}</p>
-        <table class="table">
+        <!-- style="color: red; border: 2px ;" -->
+        <table 
+            :style="{ color: activeColor, border: borderSize + 'px solid ' + activeColor }"
+            class="table"
+        >
             <thead>
                 <tr>
                     <th scope="col">Name</th>
@@ -65,7 +85,9 @@ export default {
                     <th scope="col">Action</th>
                 </tr>
             </thead>
-            <tbody class="table-group-divider">
+            <tbody
+                class="table-group-divider"
+            >
                 <tr 
                     v-for="item in getProducts"
                     :key="item.id"
@@ -77,14 +99,30 @@ export default {
                             {{ item.name }}
                         </router-link>
                     </td>
-                    <td>{{ item.category }}</td>
+                    <td>
+                        <span
+                            class="badge"
+                            :class="getCategoryClass(item.category)"
+                        >
+                            {{ item.category }}
+                        </span>
+                    </td>
                     <td>
                         <p>
                             {{item.description}}
                         </p>
                     </td>
-                    <td>{{ item.price }} €</td>
-                    <td>{{ item.vta }} %</td>
+                    <td
+                        :class="item.category"
+                    >
+                        
+                        {{ item.price }} €</td>
+                    <td>
+                        <span :class="item.vta == 20 ?  'badge text-bg-danger' : 'badge text-bg-info' ">
+                            {{ item.vta }} %
+                        </span>
+                    
+                    </td>
                     <!-- Appel à une fonction computed -->
                     <td>{{ vtaCalculation(item.price, item.vta) }} €</td>
                     <td>
